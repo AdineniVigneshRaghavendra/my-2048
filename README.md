@@ -1,5 +1,4 @@
 The project name is MY-2048.
-Screenshot 2026-10-11 194457.png
 <img src="Screenshot 2026-10-11 194457.png" alt="Screenshot of my 2048 game" width="400">
 
 
