@@ -48,7 +48,8 @@
             color: white;
             border: 0;
             border-radius: 4px;
-            padding: 6px;
+            padding: 8px 10px;
+            margin-left: 6px;
             cursor: pointer;
         }
 
@@ -59,7 +60,7 @@
     </style>
     <script>
        const board = document.querySelector("#board");
-       let tiles = Array(16).fill(0), score = 0, over=false, won=false;
+       let tiles = Array(16).fill(0), score = 0, over=false, won=false, best = 0;
        try { best = +localStorage.best || 0; } catch(e) {}
 
        function draw() {
@@ -140,6 +141,7 @@
        addTile();
        draw();
        }
+       window.start = start;
        start();
     </script>
 </body>
