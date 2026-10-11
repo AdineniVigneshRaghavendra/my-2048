@@ -1,5 +1,4 @@
 The project name is MY-2048.
-![My 2048 game](Screenshot 2026-10-11 194457.png)
 i created it completely based on classic 2048 game.
 the main goal is to get number 2048 by moving the squares in the game.
 for playing this game just use arrow keys or "w a s d" keys of ur keyboard.
