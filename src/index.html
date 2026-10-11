@@ -1,0 +1,108 @@
+<body>
+    <main>
+        <header>
+            <h1>2048</h1>
+            <p>Join the numbers!</p>
+        </header>
+
+        <div id="board"></div>
+    </main>
+    <style>
+        *{ box-sizing: border-box;}
+        body{
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: #faf8ef;
+            font-family: Arial, sans-serif;
+            color: #776e65;
+        }
+        main { width: min(90vw, 360px);}
+        h1 { font-size: 52px; margin: 0;}
+        header {margin-bottom: 18px;}
+        header p {margin: 5px 0;}
+        #board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            padding: 8px;
+            background: #bbada0;
+            border-radius: 6px;
+
+        }
+        .title {
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            border-radius: 4px;
+            background: #cdc1b4;
+            font-size: clamp(20px, 6vw, 32px);
+            font-weight: bold;
+        }
+
+        .v2{ background: #eee4da;}
+        .v4 {background: #ede0c8;}
+        .v8 {background: #f2b179;}
+
+    </style>
+    <script>
+       const board = document.querySelector("#board");
+       let tiles = Array(16).fill(0);
+
+       function draw() {
+        board.innerHTML = tiles.map(v =>
+            `<div class="tile ${v ? "v"+v : ""}">${v||""}</div>`
+           ).join("");
+
+       }
+
+       function addTile() {
+        let empty = tiles.map((v,i) => v ? -1 : i).filter(i => i >= 0);
+        if(empty.length)
+           tiles[empty[Math.random()*empty.length|0]] = 
+            Math.random() < .9 ? 2 : 4;
+       }
+
+       function move (direction) {
+        let next = tiles.slice();
+
+        for(let n=0; n<4; n++)
+       {
+        let ids = Array.from({length:4}, (_,i) => 
+    direction===0 ? n*4+i :
+    direction===1 ? n*4+3-i :
+    direction===2 ? i*4+n : (3-i)*4+n
+    );
+
+    let values = ids.map(i => tiles[i].filter(Boolean);
+    let result = [];
+
+  for(let i=0; i<values.length; i++){
+    if(values[i]===values[i+1]) {
+        result.push(values[i]*2);
+        i++;
+    } else result.push(values[i]);
+  }
+  ids.forEach((id,i) => next[id] = result[i] || 0);
+   
+       }
+
+       if(next.every((v,i) => v===tiles[i])) return;
+       tiles = next;
+       addTile();
+       draw();
+       }
+
+       onkeydown = e => {
+        let keys = ["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"];
+        let d = keys.indexOf(e.key);
+        if(d >= 0) {
+            e.preventDefault();
+            move(d);
+        }
+       };
+
+       function start
+    </script>
+</body>
